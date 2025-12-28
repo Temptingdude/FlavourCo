@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — FlavourCo</title>
+  <meta name="description" content="Contact FlavourCo for retail or bulk orders, WhatsApp and inquiry form available." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/images/logo.svg" alt="FlavourCo logo"><span class="brand">FlavourCo</span></a>
+      <nav class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <h1>Contact & Orders</h1>
+    <p>For quick orders, use WhatsApp. For inquiries or bulk orders, fill the form below and we'll respond promptly.</p>
+
+    <a class="btn whatsapp" href="https://wa.me/923390791989?text=Hi%20FlavourCo%2C%20I%20have%20an%20order%20inquiry" target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+    <form id="inquiry-form" class="form" data-endpoint="https://formspree.io/f/yourFormID" method="POST" action="https://formspree.io/f/yourFormID">
+      <label for="name">Name</label>
+      <input id="name" name="name" required>
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" required>
+
+      <label for="message">Message / Order details</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" class="btn primary">Send Inquiry</button>
+      <p id="form-msg" class="muted"></p>
+    </form>
+
+    <section class="local-info">
+      <h3>Local Delivery</h3>
+      <p>We currently deliver across major cities in Pakistan. Delivery times depend on location and order size.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p class="muted">© <span id="year4"></span> FlavourCo</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

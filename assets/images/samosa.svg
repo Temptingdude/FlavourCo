@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-label="Samosa">
+  <rect width="100%" height="100%" rx="12" fill="#fff8f3"/>
+  <polygon points="30,100 80,20 130,100" fill="#f3d8b5" stroke="#e7b97a" stroke-width="2"/>
+  <text x="12" y="110" font-family="Poppins, sans-serif" font-size="12" fill="#8B5E3C">Samosa</text>
+</svg>
