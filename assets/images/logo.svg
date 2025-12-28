@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40" role="img" aria-label="FlavourCo logo">
+  <rect rx="8" width="140" height="40" fill="#F7F6F0"/>
+  <g transform="translate(10,8)" fill="#8B5E3C" font-family="Poppins, sans-serif" font-weight="700">
+    <text x="0" y="18" font-size="18">Flavour</text>
+    <text x="78" y="18" font-size="18" fill="#D75A4A">Co</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-label="Nuggets">
+  <rect width="100%" height="100%" rx="12" fill="#fff9f4"/>
+  <g fill="#f2c08b">
+    <circle cx="45" cy="60" r="14" />
+    <circle cx="80" cy="50" r="12" />
+    <circle cx="115" cy="68" r="13" />
+  </g>
+  <text x="12" y="110" font-family="Poppins, sans-serif" font-size="12" fill="#8B5E3C">Nuggets</text>
+</svg>

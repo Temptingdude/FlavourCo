@@ -1,0 +1,9 @@
+[
+  {"id":"paratha","name":"Frozen Parathas","category":"Frozen Snacks","description":"Flaky, layered parathas. Pan-fry or bake for best results.","image":"assets/images/paratha.svg","price":"PKR 250","pack":"6 pcs"},
+  {"id":"samosa","name":"Samosas","category":"Frozen Snacks","description":"Crisp samosas with traditional filling, ready to fry or bake.","image":"assets/images/samosa.svg","price":"PKR 300","pack":"12 pcs"},
+  {"id":"kebab","name":"Kebabs","category":"Frozen Snacks","description":"Seasoned kebabs, great for grills and home-style meals.","image":"assets/images/kebab.svg","price":"PKR 420","pack":"8 pcs"},
+  {"id":"nuggets","name":"Chicken Nuggets","category":"Frozen Snacks","description":"Crispy nuggets, perfect for kids and snacks.","image":"assets/images/nuggets.svg","price":"PKR 350","pack":"500g"},
+  {"id":"fries","name":"Crispy Fries","category":"Frozen Snacks","description":"Crispy, golden fries — oven or deep-fry friendly.","image":"assets/images/fries.svg","price":"PKR 200","pack":"1kg"},
+  {"id":"veg","name":"Mixed Vegetables","category":"Frozen Vegetables","description":"Washed and blanched mixed vegetables for curries and stir-fries.","image":"assets/images/vegetables.svg","price":"PKR 220","pack":"1kg"},
+  {"id":"meal","name":"Family Meal Pack","category":"Ready-to-Cook Meals","description":"Balanced meal pack for 3-4 people, quick to prepare.","image":"assets/images/meal.svg","price":"PKR 900","pack":"Family"}
+]

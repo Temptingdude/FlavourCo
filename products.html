@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Products — FlavourCo</title>
+  <meta name="description" content="Explore FlavourCo product categories: Frozen Snacks, Ready-to-Cook Meals, Frozen Vegetables." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/images/logo.svg" alt="FlavourCo logo"><span class="brand">FlavourCo</span></a>
+      <nav class="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html" class="cta">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Products</h1>
+    <p class="muted">Browse our categories and click "Order" to start an inquiry or place a sample order.</p>
+
+    <section id="product-list" class="product-section">
+      <div class="product-grid" id="products"></div>
+    </section>
+
+    <p class="muted">Want to place a bulk or retail order? <a href="contact.html">Contact us</a> via WhatsApp or the inquiry form.</p>
+  </main>
+
+  <footer class="site-footer container">
+    <p class="muted">© <span id="year2"></span> FlavourCo</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Populate products from JSON
+    (function(){
+      fetch('assets/data/products.json')
+      .then(r=>r.json())
+      .then(products=>{
+        const container = document.getElementById('products');
+        products.forEach(p=>{
+          const el = document.createElement('article');
+          el.className = 'product-card';
+          el.innerHTML = `
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <p class="muted">${p.pack} • ${p.price}</p>
+            <div style="margin-top:8px"><a class="btn" href="order.html?id=${p.id}">Order</a></div>
+          `;
+          container.appendChild(el);
+        });
+      }).catch(err=>{ console.error(err); });
+    })();
+  </script>
+</body>
+</html>

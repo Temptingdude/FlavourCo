@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order — FlavourCo</title>
+  <meta name="description" content="Place an order or inquiry with FlavourCo." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="assets/images/logo.svg" alt="FlavourCo logo"><span class="brand">FlavourCo</span></a>
+      <nav class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Order</h1>
+    <div id="order-root">
+      <p class="muted">Loading product...</p>
+    </div>
+  </main>
+
+  <footer class="site-footer container">
+    <p class="muted">© <span id="year5"></span> FlavourCo</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Read product id from query and show order form
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const root = document.getElementById('order-root');
+      if(!id){ root.innerHTML = '<p class="muted">No product selected. <a href="products.html">Browse products</a></p>'; return; }
+      fetch('assets/data/products.json').then(r=>r.json()).then(products=>{
+        const p = products.find(x=>x.id===id);
+        if(!p) { root.innerHTML = '<p class="muted">Product not found.</p>'; return; }
+        root.innerHTML = `
+          <div class="product-card">
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <p class="muted">${p.pack} • ${p.price}</p>
+            <form id="quick-order" class="form" data-endpoint="https://formspree.io/f/yourFormID">
+              <label for="name">Name</label>
+              <input id="name" name="name" required>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" required>
+              <label for="qty">Quantity / Notes</label>
+              <input id="qty" name="qty" value="1" required>
+              <input type="hidden" name="product" value="${p.name}">
+              <button class="btn primary" type="submit">Send Order via WhatsApp</button>
+              <p id="order-msg" class="muted"></p>
+            </form>
+          </div>
+        `;
+      });
+    })();
+  </script>
+</body>
+</html>
