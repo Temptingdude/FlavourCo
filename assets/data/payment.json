@@ -1,0 +1,11 @@
+{
+  "jazzcash_number": "+92 300 0000000",
+  "easypaisa_number": "+92 300 0000000",
+  "bank": {
+    "account_title": "FlavourCo",
+    "account_number": "0123456789",
+    "iban": "PK00XXXXXXXXXXXX",
+    "bank_name": "Your Bank"
+  },
+  "note": "Update these values with your real JazzCash / Easypaisa numbers and bank details. Fields with \"beta\" are placeholders for future automated integrations."
+}
