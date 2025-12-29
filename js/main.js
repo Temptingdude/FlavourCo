@@ -1,59 +1,144 @@
-// Small interaction handlers for the static site
-document.addEventListener('DOMContentLoaded', function(){
-  const years = document.querySelectorAll('#year, #year2, #year3, #year4');
-  years.forEach(el=>{ if(el) el.textContent = new Date().getFullYear(); });
+(function(){
+  const form = document.getElementById('orderForm');
+  const instructionsBox = document.getElementById('instructionsBox');
+  const message = document.getElementById('formMessage');
+  const receiptInput = document.getElementById('receipt');
+  const clearBtn = document.getElementById('clearBtn');
 
-  const form = document.getElementById('inquiry-form');
-  if(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const phone = form.phone.value.trim();
-      const message = form.message.value.trim();
-      const msgEl = document.getElementById('form-msg');
-      if(!name || !phone || !message){ msgEl.textContent = 'Please fill all fields.'; return; }
-      // If form has a data-endpoint (Formspree or serverless), submit there as well
-      const endpoint = form.dataset.endpoint;
-      const whatsappNumber = '923390791989';
-      const waText = encodeURIComponent(`Hi FlavourCo, I have an order inquiry.%0A%0AName: ${name}%0APhone: ${phone}%0A%0A${message}`);
-      const waUrl = `https://wa.me/${whatsappNumber}?text=${waText}`;
+  // Read payment display values from assets/data/payment.json
+  let PAYMENT_DATA = null;
+  fetch('/assets/data/payment.json').then(r=>r.json()).then(j=>{ PAYMENT_DATA = j; }).catch(()=>{ PAYMENT_DATA = null; });
 
-      if(endpoint){
-        // send to Formspree (or similar) asynchronously, don't block WhatsApp open
-        fetch(endpoint, {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name,phone,message})})
-        .then(res=>{ if(res.ok) console.log('Form submitted to serverless endpoint'); })
-        .catch(err=>console.warn('Serverless submit failed', err));
+  // Change this to your serverless endpoints during deployment.
+  const CREATE_ORDER_ENDPOINT = '/.netlify/functions/create-order';
+  const UPLOAD_RECEIPT_ENDPOINT = '/.netlify/functions/upload-receipt';
+
+  function serializeForm(formEl){
+    const fd = new FormData(formEl);
+    const data = {};
+    for (const [k,v] of fd.entries()){
+      if (k === 'items[]'){
+        data.items = data.items || [];
+        data.items.push(v);
+      } else {
+        data[k] = v;
       }
-
-      try{ window.open(waUrl, '_blank'); msgEl.textContent = 'Opening WhatsApp to send your inquiry.'; }
-      catch(e){ const subject = encodeURIComponent('Order inquiry from ' + name); const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\n\n${message}`); window.location.href = `mailto:orders@flavourco.pk?subject=${subject}&body=${body}`; msgEl.textContent = 'Could not open WhatsApp — opening your email client instead.'; }
-      form.reset();
-    });
+    }
+    return data;
   }
 
-  // Quick-order forms on order.html
-  const quick = document.getElementById('quick-order');
-  if(quick){
-    quick.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = quick.name.value.trim();
-      const phone = quick.phone.value.trim();
-      const qty = quick.qty.value.trim();
-      const product = quick.querySelector('input[name="product"]').value;
-      const msgEl = document.getElementById('order-msg');
-      if(!name||!phone||!qty){ msgEl.textContent = 'Please fill all fields.'; return; }
-      const whatsappNumber = '923390791989';
-      const waText = encodeURIComponent(`Hi FlavourCo, I want to order ${qty} of ${product}.%0A%0AName: ${name}%0APhone: ${phone}`);
-      const waUrl = `https://wa.me/${whatsappNumber}?text=${waText}`;
-      const endpoint = quick.dataset.endpoint;
-      if(endpoint){
-        fetch(endpoint, {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name,phone,qty,product})})
-        .then(r=>console.log('Submitted quick order'))
-        .catch(()=>{});
+  async function postJSON(url, body){
+    const res = await fetch(url, {
+      method:'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body),
+    });
+    return res.json();
+  }
+
+  form && form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    message.textContent = 'Creating order…';
+    instructionsBox.innerHTML = '';
+
+    const data = serializeForm(form);
+
+    // Basic client-side validation
+    if (!data.name || !data.phone || !data.address){
+      message.textContent = 'Please fill name, phone, and address.';
+      return;
+    }
+    // Build items details (parse price included in value)
+    const items = [];
+    const formData = new FormData(form);
+    for (const val of formData.getAll('items[]')){
+      const [title, price] = val.split('|');
+      items.push({title, price: Number(price)});
+    }
+    if (items.length === 0){
+      message.textContent = 'Please select at least one product.';
+      return;
+    }
+    // compute total
+    const total = items.reduce((s,i)=>s+i.price,0);
+    data.items = items;
+    data.total_amount = total;
+    data.site = window.location.origin;
+
+    try {
+      const res = await postJSON(CREATE_ORDER_ENDPOINT, data);
+      if (res && res.success){
+        const orderId = res.orderId;
+        message.textContent = 'Order created. Follow the payment instructions below.';
+        renderInstructions(orderId, data.payment_method, data.total_amount, res.paymentDetails);
+        if (receiptInput.files && receiptInput.files.length){
+          message.textContent = 'Uploading receipt…';
+          const file = receiptInput.files[0];
+          if (file.size > 5*1024*1024){
+            message.textContent = 'Receipt too large. Max 5MB.';
+            return;
+          }
+          const b64 = await fileToBase64(file);
+          const upRes = await postJSON(UPLOAD_RECEIPT_ENDPOINT, {
+            orderId,
+            fileName: file.name,
+            contentType: file.type,
+            base64: b64.split(',')[1],
+            customerEmail: data.email || ''
+          });
+          if (upRes && upRes.success){
+            message.textContent = 'Receipt uploaded. We will verify your transfer and confirm soon.';
+          } else {
+            message.textContent = 'Order created, but receipt upload failed. You can send it via WhatsApp or email.';
+          }
+        } else {
+          message.textContent = 'Order created. Please complete transfer and upload the receipt or send via WhatsApp.';
+        }
+      } else {
+        message.textContent = (res && res.error) ? res.error : 'Failed to create order. Try again later.';
       }
-      try{ window.open(waUrl,'_blank'); msgEl.textContent='Opening WhatsApp...'; }
-      catch(e){ window.location.href = `mailto:orders@flavourco.pk?subject=${encodeURIComponent('Order: '+product)}&body=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nQty: ${qty}`)}`; msgEl.textContent='Opening email client...'; }
-      quick.reset();
+    } catch(err){
+      console.error(err);
+      message.textContent = 'Unexpected error. Try again later.';
+    }
+  });
+
+  clearBtn && clearBtn.addEventListener('click', function(){ form.reset(); instructionsBox.innerHTML=''; message.textContent=''; });
+
+  function renderInstructions(orderId, method, amount, paymentDetails = null){
+    const container = instructionsBox;
+    let html = `<div><strong>Order ID:</strong> ${orderId}</div>`;
+    html += `<div><strong>Amount:</strong> PKR ${amount}</div>`;
+    const pd = PAYMENT_DATA;
+    if (paymentDetails){
+      html += `<div class=\"muted\">${paymentDetails}</div>`;
+    } else if (pd){
+      if (method === 'jazzcash'){
+        html += `<div><strong>JazzCash:</strong> <br>Number: <code>${pd.jazzcash_number}</code><br>Include Order ID in the transfer note.</div>`;
+      } else if (method === 'easypaisa'){
+        html += `<div><strong>Easypaisa:</strong> <br>Number: <code>${pd.easypaisa_number}</code><br>Include Order ID in the transfer note.</div>`;
+      } else {
+        html += `<div><strong>Bank Transfer:</strong> <br>Account: <code>${pd.bank.account_title} — ${pd.bank.account_number}</code><br>IBAN: <code>${pd.bank.iban}</code><br>Bank: <code>${pd.bank.bank_name}</code><br>Include Order ID in the transfer note.</div>`;
+      }
+    } else {
+      if (method === 'jazzcash'){
+        html += `<div><strong>JazzCash:</strong> <br>Number: <code>+92 3xx xxxxxxx</code><br>Include Order ID in the transfer note.</div>`;
+      } else if (method === 'easypaisa'){
+        html += `<div><strong>Easypaisa:</strong> <br>Number: <code>+92 3xx xxxxxxx</code><br>Include Order ID in the transfer note.</div>`;
+      } else {
+        html += `<div><strong>Bank Transfer:</strong> <br>Account: <code>FlavourCo — 0123456789 (Bank Name)</code><br>IBAN: <code>PK00XXXXXXXXXXXX</code><br>Include Order ID in the transfer note.</div>`;
+      }
+    }
+    html += `<div class=\"muted\" style=\"margin-top:.6rem\">After payment, upload the transfer receipt in the form to speed up verification.</div>`;
+    container.innerHTML = html;
+  }
+
+  function fileToBase64(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
     });
   }
-});
+})();
