@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logo from '/fc_logo.png'
 import './App.css'
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <div className="container">
           <div className="nav">
             <div className="logo">
-              <h1>FlavourCo</h1>
+              <img src={logo} alt="FlavourCo Logo" className="logo-img" />
             </div>
             <nav className="nav-links">
               <a href="#home">Home</a>
@@ -177,8 +178,8 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3>FlavourCo</h3>
-              <p>Premium flavors for extraordinary experiences</p>
+              <img src={logo} alt="FlavourCo Logo" className="footer-logo" />
+              <p style={{ marginTop: '0.5rem' }}>Premium flavors for extraordinary experiences</p>
             </div>
             <div className="footer-section">
               <h4>Quick Links</h4>
