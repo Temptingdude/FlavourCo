@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import logo from '/fc_logo1.svg'
+import logo from '/design.svg'
 import './App.css'
 
 function App() {
@@ -12,6 +12,58 @@ function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const products = [
+    {
+      id: 1,
+      name: 'Frozen Chicken Shami Kabab',
+      description: 'Delicious homemade chicken shami kababs, perfectly spiced and ready to cook',
+      image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=400&fit=crop',
+      category: 'Chicken'
+    },
+    {
+      id: 2,
+      name: 'Frozen Alu Cutlets',
+      description: 'Crispy potato cutlets with aromatic spices, made with love at home',
+      image: 'https://images.unsplash.com/photo-1615367427256-65860b3c8c0e?w=600&h=400&fit=crop',
+      category: 'Vegetarian'
+    },
+    {
+      id: 3,
+      name: 'Spring Rolls',
+      description: 'Fresh spring rolls with vegetables, crispy and golden when fried',
+      image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=400&fit=crop',
+      category: 'Vegetarian'
+    },
+    {
+      id: 4,
+      name: 'Alu Masala Rolls',
+      description: 'Spiced potato rolls wrapped in flaky pastry, perfect for snacks',
+      image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&h=400&fit=crop',
+      category: 'Vegetarian'
+    },
+    {
+      id: 5,
+      name: 'Alu Samosa',
+      description: 'Classic triangular samosas filled with spiced potatoes',
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop',
+      category: 'Vegetarian'
+    },
+    {
+      id: 6,
+      name: 'Chicken Samosa',
+      description: 'Crispy samosas filled with tender spiced chicken',
+      image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&h=400&fit=crop',
+      category: 'Chicken'
+    },
+    {
+      id: 7,
+      name: 'Chicken Cheese Samosa',
+      description: 'Delicious samosas with chicken and melted cheese filling',
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop',
+      category: 'Chicken'
+    }
+  ]
 
   return (
     <div className="app">
@@ -35,11 +87,11 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Premium Flavors,<br />Extraordinary Experiences</h1>
-          <p className="hero-subtitle">Discover our exquisite range of flavors crafted for discerning palates</p>
+          <h1 className="hero-title">Premium Homemade<br />Frozen Foods</h1>
+          <p className="hero-subtitle">Authentic flavors, made with love, frozen fresh for your convenience</p>
           <div className="hero-buttons">
             <a href="#products" className="btn btn-primary">Explore Products</a>
-            <a href="#contact" className="btn btn-secondary">Get in Touch</a>
+            <a href="#contact" className="btn btn-secondary">Order Now</a>
           </div>
         </div>
         <div className="hero-overlay"></div>
@@ -50,37 +102,41 @@ function App() {
         <div className="container">
           <div className="section-header">
             <h2>About FlavourCo</h2>
-            <p className="section-subtitle">Crafting excellence in every flavor</p>
+            <p className="section-subtitle">Homemade goodness, frozen fresh</p>
           </div>
           <div className="about-content">
             <div className="about-text">
               <h3>Our Story</h3>
               <p>
-                At FlavourCo, we believe that great flavors are the foundation of memorable experiences. 
-                Our passion for culinary excellence drives us to source and create the finest flavors 
-                that elevate every dish and delight every palate.
+                At FlavourCo, we believe that great food starts with great ingredients and even greater care. 
+                Our frozen food products are made fresh in our kitchen using traditional recipes passed down 
+                through generations, then carefully frozen to preserve their authentic flavors and freshness.
               </p>
               <p>
-                With years of expertise in the culinary industry, we've built a reputation for quality, 
-                innovation, and unwavering commitment to our customers. Every product in our collection 
-                is carefully selected and crafted to meet the highest standards.
+                Every item is handcrafted with love, ensuring that when you cook our products, you experience 
+                the same delicious taste and quality as if they were made fresh in your own kitchen.
               </p>
             </div>
             <div className="about-features">
               <div className="feature">
-                <div className="feature-icon">✨</div>
-                <h4>Premium Quality</h4>
-                <p>Only the finest ingredients and flavors</p>
+                <div className="feature-icon">🏠</div>
+                <h4>Homemade Quality</h4>
+                <p>All products made fresh in our kitchen</p>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">❄️</div>
+                <h4>Frozen Fresh</h4>
+                <p>Flash frozen to lock in flavor and nutrients</p>
               </div>
               <div className="feature">
                 <div className="feature-icon">🌿</div>
-                <h4>Natural & Fresh</h4>
-                <p>Sourced from trusted suppliers worldwide</p>
+                <h4>Natural Ingredients</h4>
+                <p>No preservatives, just pure authentic flavors</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🎯</div>
-                <h4>Expert Curation</h4>
-                <p>Carefully selected by culinary professionals</p>
+                <div className="feature-icon">👨‍🍳</div>
+                <h4>Expert Crafted</h4>
+                <p>Made by experienced home chefs</p>
               </div>
             </div>
           </div>
@@ -92,39 +148,22 @@ function App() {
         <div className="container">
           <div className="section-header">
             <h2>Our Products</h2>
-            <p className="section-subtitle">Explore our diverse range of premium flavors</p>
+            <p className="section-subtitle">Discover our range of delicious frozen foods</p>
           </div>
           <div className="products-grid">
-            <div className="product-card">
-              <div className="product-icon">🍃</div>
-              <h3>Natural Extracts</h3>
-              <p>Pure, natural flavor extracts sourced from the finest ingredients around the world.</p>
-            </div>
-            <div className="product-card">
-              <div className="product-icon">🌶️</div>
-              <h3>Spice Blends</h3>
-              <p>Expertly crafted spice blends that bring depth and complexity to your dishes.</p>
-            </div>
-            <div className="product-card">
-              <div className="product-icon">🍯</div>
-              <h3>Artisan Syrups</h3>
-              <p>Premium syrups made with natural ingredients for beverages and desserts.</p>
-            </div>
-            <div className="product-card">
-              <div className="product-icon">🧂</div>
-              <h3>Seasoning Mixes</h3>
-              <p>Professional-grade seasoning mixes for chefs and home cooks alike.</p>
-            </div>
-            <div className="product-card">
-              <div className="product-icon">🍋</div>
-              <h3>Citrus Essences</h3>
-              <p>Bright, vibrant citrus essences that add freshness to any recipe.</p>
-            </div>
-            <div className="product-card">
-              <div className="product-icon">🌰</div>
-              <h3>Nut Flavors</h3>
-              <p>Rich, aromatic nut flavors perfect for baking and confectionery.</p>
-            </div>
+            {products.map((product) => (
+              <div key={product.id} className="product-card">
+                <div className="product-image-wrapper">
+                  <img src={product.image} alt={product.name} className="product-image" />
+                  <div className="product-badge">{product.category}</div>
+                </div>
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
+                  <button className="btn btn-product">Order Now</button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -134,10 +173,17 @@ function App() {
         <div className="container">
           <div className="section-header">
             <h2>Get in Touch</h2>
-            <p className="section-subtitle">We'd love to hear from you</p>
+            <p className="section-subtitle">Place your order or ask us anything</p>
           </div>
           <div className="contact-content">
             <div className="contact-info">
+              <div className="contact-item">
+                <div className="contact-icon">📞</div>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+92 339 0791989</p>
+                </div>
+              </div>
               <div className="contact-item">
                 <div className="contact-icon">📧</div>
                 <div>
@@ -165,7 +211,10 @@ function App() {
                 <input type="email" placeholder="Your Email" required />
               </div>
               <div className="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <input type="tel" placeholder="Your Phone" required />
+              </div>
+              <div className="form-group">
+                <textarea placeholder="Your Message or Order Details" rows="5" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary">Send Message</button>
             </form>
@@ -179,7 +228,7 @@ function App() {
           <div className="footer-content">
             <div className="footer-section">
               <img src={logo} alt="FlavourCo Logo" className="footer-logo" />
-              <p style={{ marginTop: '0.5rem' }}>Premium flavors for extraordinary experiences</p>
+              <p>Premium homemade frozen foods, made with love and care</p>
             </div>
             <div className="footer-section">
               <h4>Quick Links</h4>
@@ -189,8 +238,14 @@ function App() {
               <a href="#contact">Contact</a>
             </div>
             <div className="footer-section">
+              <h4>Products</h4>
+              <a href="#products">Chicken Items</a>
+              <a href="#products">Vegetarian Items</a>
+              <a href="#products">All Products</a>
+            </div>
+            <div className="footer-section">
               <h4>Connect</h4>
-              <p>Follow us for the latest updates</p>
+              <p>Follow us for updates and special offers</p>
             </div>
           </div>
           <div className="footer-bottom">
