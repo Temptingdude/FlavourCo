@@ -5,20 +5,44 @@
 }
 
 :root {
-  --primary-color: #596362;
-  --primary-dark: #4a5353;
-  --primary-light: #6d7a7a;
-  --secondary-color: #A6AA9C;
-  --secondary-dark: #8f9386;
-  --secondary-light: #b8bdb0;
-  --accent-color: #A6AA9C;
+  /* Logo Colors */
+  --logo-dark: #596362;
+  --logo-light: #A6AA9C;
+  
+  /* Primary Colors - Based on logo right side (#A6AA9C) */
+  --primary-color: #A6AA9C;
+  --primary-dark: #8f9386;
+  --primary-light: #b8bdb0;
+  --primary-lighter: #d1d4cc;
+  
+  /* Secondary Colors - Based on logo left side (#596362) */
+  --secondary-color: #596362;
+  --secondary-dark: #4a5353;
+  --secondary-light: #6d7a7a;
+  
+  /* Elegant Accent Colors */
+  --accent-warm: #c9b99b;
+  --accent-cream: #f5f3ed;
+  --accent-gold: #d4c5a9;
+  
+  /* Text Colors */
   --text-dark: #2d3436;
-  --text-light: #596362;
-  --bg-light: #f5f5f3;
+  --text-medium: #596362;
+  --text-light: #6d7a7a;
+  --text-on-dark: #ffffff;
+  
+  /* Background Colors */
+  --bg-primary: #A6AA9C;
+  --bg-light: #f5f3ed;
   --bg-white: #ffffff;
+  --bg-cream: #faf9f6;
+  
+  /* Border & Shadow */
   --border-color: #d4d6d1;
-  --shadow: 0 2px 10px rgba(89, 99, 98, 0.1);
+  --border-light: #e8e9e5;
+  --shadow: 0 2px 10px rgba(89, 99, 98, 0.08);
   --shadow-hover: 0 5px 20px rgba(89, 99, 98, 0.15);
+  --shadow-elegant: 0 8px 30px rgba(89, 99, 98, 0.12);
   
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
