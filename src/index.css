@@ -5,33 +5,37 @@
 }
 
 :root {
-  /* Logo Colors - Vibrant Variants */
-  --logo-dark: #596362;
-  --logo-light: #A6AA9C;
+  /* Logo Colors - Vibrant Colors from Logo */
+  --logo-teal: #2d7d7d;
+  --logo-orange: #ff6b35;
+  --logo-green: #4caf50;
+  --logo-blue: #42a5f5;
+  --logo-yellow: #ffc107;
   
-  /* Primary Colors - Based on Logo Right Side (#A6AA9C) */
-  --primary: #A6AA9C;
-  --primary-dark: #8f9386;
-  --primary-light: #b8bdb0;
-  --primary-lighter: #d1d4cc;
+  /* Primary Colors - Based on Logo Orange */
+  --primary: #ff6b35;
+  --primary-dark: #e55a2b;
+  --primary-light: #ff8c5a;
+  --primary-lighter: #ffb399;
   
-  /* Secondary Colors - Based on Logo Left Side (#596362) */
-  --secondary: #596362;
-  --secondary-dark: #4a5353;
-  --secondary-light: #6d7a7a;
+  /* Secondary Colors - Based on Logo Teal */
+  --secondary: #2d7d7d;
+  --secondary-dark: #1f5f5f;
+  --secondary-light: #3d9d9d;
   
-  /* Accent Colors - Elegant & Professional */
-  --accent-gold: #c9b99b;
-  --accent-cream: #f5f3ed;
-  --accent-warm: #e8e6e0;
-  --accent-light: #faf9f6;
+  /* Accent Colors - From Logo */
+  --accent-green: #4caf50;
+  --accent-blue: #42a5f5;
+  --accent-yellow: #ffc107;
+  --accent-cream: #fff8f0;
+  --accent-warm: #ffe5d9;
   
   /* Background Colors */
-  --bg-primary: #faf9f6;
+  --bg-primary: #f5f5f5;
   --bg-light: #ffffff;
   --bg-dark: #2a2d2e;
-  --bg-gradient-start: #A6AA9C;
-  --bg-gradient-end: #b8bdb0;
+  --bg-gradient-start: #ff6b35;
+  --bg-gradient-end: #ff8c5a;
   
   /* Text Colors */
   --text-dark: #2a2d2e;
