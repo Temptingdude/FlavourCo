@@ -29,7 +29,7 @@
 }
 
 .logo-img {
-  height: 50px;
+  height: 80px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -40,9 +40,9 @@
 }
 
 .footer-logo {
-  height: 60px;
+  height: 100px;
   width: auto;
-  max-width: 200px;
+  max-width: 300px;
   object-fit: contain;
   margin-bottom: 1rem;
   opacity: 0.9;
@@ -453,6 +453,15 @@ section {
 }
 
 @media (max-width: 768px) {
+  .logo-img {
+    height: 60px;
+  }
+
+  .footer-logo {
+    height: 80px;
+    max-width: 250px;
+  }
+
   .nav {
     flex-direction: column;
     gap: 1rem;
@@ -488,8 +497,13 @@ section {
 }
 
 @media (max-width: 480px) {
-  .logo h1 {
-    font-size: 1.5rem;
+  .logo-img {
+    height: 50px;
+  }
+
+  .footer-logo {
+    height: 70px;
+    max-width: 200px;
   }
 
   .nav-links {
