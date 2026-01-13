@@ -53,14 +53,14 @@ function App() {
       id: 6,
       name: 'Chicken Samosa',
       description: 'Crispy samosas filled with tender spiced chicken',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
+      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Chicken'
     },
     {
       id: 7,
       name: 'Chicken Cheese Samosa',
       description: 'Delicious samosas with chicken and melted cheese filling',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
+      image: 'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Chicken'
     }
   ]
@@ -103,7 +103,7 @@ function App() {
           <div className="section-header">
             <h2>About FlavourCo</h2>
             <p className="section-subtitle">Homemade goodness, frozen fresh</p>
-          </div>
+      </div>
           <div className="about-content">
             <div className="about-text">
               <h3>Our Story</h3>
@@ -112,11 +112,11 @@ function App() {
                 Our frozen food products are made fresh in our kitchen using traditional recipes passed down 
                 through generations, then carefully frozen to preserve their authentic flavors and freshness.
               </p>
-              <p>
+        <p>
                 Every item is handcrafted with love, ensuring that when you cook our products, you experience 
                 the same delicious taste and quality as if they were made fresh in your own kitchen.
-              </p>
-            </div>
+        </p>
+      </div>
             <div className="about-features">
               <div className="feature">
                 <div className="feature-icon">🏠</div>
