@@ -419,7 +419,7 @@ section {
 }
 
 .footer-section a:hover {
-  color: var(--secondary-color);
+  color: var(--secondary-light);
 }
 
 .footer-bottom {
