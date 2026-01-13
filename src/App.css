@@ -558,8 +558,9 @@ section {
   }
 
   .logo-img {
-    height: 140px;
-    max-height: 140px;
+    height: 130px;
+    max-height: 130px;
+    min-height: 130px;
   }
 
   .nav-links {
