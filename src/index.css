@@ -9,29 +9,29 @@
   --logo-dark: #596362;
   --logo-light: #A6AA9C;
   
-  /* Primary Colors - Vibrant & Elegant */
-  --primary: #ff6b4a;
-  --primary-dark: #e55a35;
-  --primary-light: #ff8c6d;
-  --primary-lighter: #ffb399;
+  /* Primary Colors - Based on Logo Right Side (#A6AA9C) */
+  --primary: #A6AA9C;
+  --primary-dark: #8f9386;
+  --primary-light: #b8bdb0;
+  --primary-lighter: #d1d4cc;
   
-  /* Secondary Colors */
-  --secondary: #f4a261;
-  --secondary-dark: #e76f51;
-  --secondary-light: #f9c784;
+  /* Secondary Colors - Based on Logo Left Side (#596362) */
+  --secondary: #596362;
+  --secondary-dark: #4a5353;
+  --secondary-light: #6d7a7a;
   
-  /* Accent Colors - Vibrant */
-  --accent-gold: #f4a261;
-  --accent-orange: #ff6b4a;
-  --accent-cream: #fff8f0;
-  --accent-warm: #ffe5d9;
+  /* Accent Colors - Elegant & Professional */
+  --accent-gold: #c9b99b;
+  --accent-cream: #f5f3ed;
+  --accent-warm: #e8e6e0;
+  --accent-light: #faf9f6;
   
   /* Background Colors */
-  --bg-primary: #fff8f0;
+  --bg-primary: #faf9f6;
   --bg-light: #ffffff;
   --bg-dark: #2a2d2e;
-  --bg-gradient-start: #ff6b4a;
-  --bg-gradient-end: #f4a261;
+  --bg-gradient-start: #A6AA9C;
+  --bg-gradient-end: #b8bdb0;
   
   /* Text Colors */
   --text-dark: #2a2d2e;
