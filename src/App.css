@@ -406,13 +406,13 @@ section {
 }
 
 .footer-section h3 {
-  color: var(--secondary-color);
+  color: var(--text-on-dark);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
 .footer-section h4 {
-  color: white;
+  color: var(--text-on-dark);
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
