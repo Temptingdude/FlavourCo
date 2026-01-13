@@ -26,13 +26,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
-  min-height: 150px;
+  padding: 0.3rem 0;
+  min-height: 180px;
 }
 
 .logo-img {
-  height: 140px;
-  max-height: 140px;
+  height: 180px;
+  max-height: 180px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -555,8 +555,8 @@ section {
   }
 
   .logo-img {
-    height: 100px;
-    max-height: 100px;
+    height: 140px;
+    max-height: 140px;
   }
 
   .nav-links {
@@ -595,8 +595,8 @@ section {
 
 @media (max-width: 480px) {
   .logo-img {
-    height: 90px;
-    max-height: 90px;
+    height: 120px;
+    max-height: 120px;
   }
 
   .nav-links {
