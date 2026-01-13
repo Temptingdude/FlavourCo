@@ -18,49 +18,49 @@ function App() {
       id: 1,
       name: 'Frozen Chicken Shami Kabab',
       description: 'Delicious homemade chicken shami kababs, perfectly spiced and ready to cook',
-      image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Chicken'
     },
     {
       id: 2,
       name: 'Frozen Alu Cutlets',
       description: 'Crispy potato cutlets with aromatic spices, made with love at home',
-      image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Vegetarian'
     },
     {
       id: 3,
       name: 'Spring Rolls',
       description: 'Fresh spring rolls with vegetables, crispy and golden when fried',
-      image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Vegetarian'
     },
     {
       id: 4,
       name: 'Alu Masala Rolls',
       description: 'Spiced potato rolls wrapped in flaky pastry, perfect for snacks',
-      image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Vegetarian'
     },
     {
       id: 5,
       name: 'Alu Samosa',
       description: 'Classic triangular samosas filled with spiced potatoes',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Vegetarian'
     },
     {
       id: 6,
       name: 'Chicken Samosa',
       description: 'Crispy samosas filled with tender spiced chicken',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Chicken'
     },
     {
       id: 7,
       name: 'Chicken Cheese Samosa',
       description: 'Delicious samosas with chicken and melted cheese filling',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
       category: 'Chicken'
     }
   ]
