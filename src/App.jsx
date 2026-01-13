@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import logo from '/fc_logo.png'
+import logo from '/fc_logo1.svg'
 import './App.css'
 
 function App() {
