@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react'
 import logo from '/trans.png'
 import './App.css'
 
+// WhatsApp phone number constant
+const WHATSAPP_PHONE = '923390791989'
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [quantities, setQuantities] = useState({})
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,51 +23,92 @@ function App() {
       name: 'Frozen Chicken Shami Kabab',
       description: 'Delicious homemade chicken shami kababs, perfectly spiced and ready to cook',
       image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Chicken'
+      category: 'Chicken',
+      price: 850
     },
     {
       id: 2,
       name: 'Frozen Alu Cutlets',
       description: 'Crispy potato cutlets with aromatic spices, made with love at home',
       image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Vegetarian'
+      category: 'Vegetarian',
+      price: 450
     },
     {
       id: 3,
       name: 'Spring Rolls',
       description: 'Fresh spring rolls with vegetables, crispy and golden when fried',
       image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Vegetarian'
+      category: 'Vegetarian',
+      price: 500
     },
     {
       id: 4,
       name: 'Alu Masala Rolls',
       description: 'Spiced potato rolls wrapped in flaky pastry, perfect for snacks',
       image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Vegetarian'
+      category: 'Vegetarian',
+      price: 400
     },
     {
       id: 5,
       name: 'Alu Samosa',
       description: 'Classic triangular samosas filled with spiced potatoes',
       image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Vegetarian'
+      category: 'Vegetarian',
+      price: 350
     },
     {
       id: 6,
       name: 'Chicken Samosa',
       description: 'Crispy samosas filled with tender spiced chicken',
       image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Chicken'
+      category: 'Chicken',
+      price: 450
     },
     {
       id: 7,
       name: 'Chicken Cheese Samosa',
       description: 'Delicious samosas with chicken and melted cheese filling',
       image: 'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600&h=400&fit=crop&q=80&auto=format',
-      category: 'Chicken'
+      category: 'Chicken',
+      price: 550
     }
   ]
+
+  // Reusable function to handle WhatsApp ordering
+  const orderNow = (productName, price, quantity = 1) => {
+    const message = `Hello FlavourCo!%0A%0A` +
+      `I would like to place an order:%0A%0A` +
+      `📦 Product: ${encodeURIComponent(productName)}%0A` +
+      `💰 Price: PKR ${price}%0A` +
+      `🔢 Quantity: ${quantity}%0A` +
+      `📍 Delivery Address: %0A` +
+      `💳 Payment Method: Cash on Delivery%0A%0A` +
+      `Thank you!`
+    
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`
+    window.open(whatsappUrl, '_blank')
+  }
+
+  // Quantity management functions
+  const getQuantity = (productId) => quantities[productId] || 1
+
+  const updateQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) newQuantity = 1
+    setQuantities(prev => ({
+      ...prev,
+      [productId]: newQuantity
+    }))
+  }
+
+  const incrementQuantity = (productId) => {
+    updateQuantity(productId, getQuantity(productId) + 1)
+  }
+
+  const decrementQuantity = (productId) => {
+    updateQuantity(productId, getQuantity(productId) - 1)
+  }
 
   return (
     <div className="app">
@@ -160,7 +205,30 @@ function App() {
                 <div className="product-info">
                   <h3>{product.name}</h3>
                   <p>{product.description}</p>
-                  <button className="btn btn-product">Order Now</button>
+                  <div className="product-price">PKR {product.price}</div>
+                  <div className="quantity-selector">
+                    <button 
+                      className="quantity-btn" 
+                      onClick={() => decrementQuantity(product.id)}
+                      aria-label="Decrease quantity"
+                    >
+                      −
+                    </button>
+                    <span className="quantity-value">{getQuantity(product.id)}</span>
+                    <button 
+                      className="quantity-btn" 
+                      onClick={() => incrementQuantity(product.id)}
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button 
+                    className="btn btn-whatsapp" 
+                    onClick={() => orderNow(product.name, product.price, getQuantity(product.id))}
+                  >
+                    📱 Order on WhatsApp
+                  </button>
                 </div>
               </div>
             ))}
