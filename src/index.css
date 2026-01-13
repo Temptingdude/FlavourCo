@@ -12,30 +12,30 @@
   --logo-blue: #42a5f5;
   --logo-yellow: #ffc107;
   
-  /* Primary Colors - Based on Logo Orange */
-  --primary: #ff6b35;
-  --primary-dark: #e55a2b;
-  --primary-light: #ff8c5a;
-  --primary-lighter: #ffb399;
+  /* Primary Colors - Complementary to Logo (Not matching) */
+  --primary: #8b4513;
+  --primary-dark: #6b3410;
+  --primary-light: #a0522d;
+  --primary-lighter: #cd853f;
   
-  /* Secondary Colors - Based on Logo Teal */
-  --secondary: #2d7d7d;
-  --secondary-dark: #1f5f5f;
-  --secondary-light: #3d9d9d;
+  /* Secondary Colors - Complementary Brown/Tan */
+  --secondary: #d2691e;
+  --secondary-dark: #b8860b;
+  --secondary-light: #daa520;
   
-  /* Accent Colors - From Logo */
-  --accent-green: #4caf50;
-  --accent-blue: #42a5f5;
-  --accent-yellow: #ffc107;
-  --accent-cream: #fff8f0;
-  --accent-warm: #ffe5d9;
+  /* Accent Colors - Warm Earth Tones */
+  --accent-green: #228b22;
+  --accent-blue: #4682b4;
+  --accent-yellow: #daa520;
+  --accent-cream: #fff8dc;
+  --accent-warm: #f5deb3;
   
-  /* Background Colors */
-  --bg-primary: #f5f5f5;
+  /* Background Colors - Light Neutral */
+  --bg-primary: #faf8f3;
   --bg-light: #ffffff;
   --bg-dark: #2a2d2e;
-  --bg-gradient-start: #ff6b35;
-  --bg-gradient-end: #ff8c5a;
+  --bg-gradient-start: #d2691e;
+  --bg-gradient-end: #daa520;
   
   /* Text Colors */
   --text-dark: #2a2d2e;
