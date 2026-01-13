@@ -25,11 +25,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .logo-img {
-  height: 80px;
+  height: 120px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -40,9 +40,9 @@
 }
 
 .footer-logo {
-  height: 100px;
+  height: 150px;
   width: auto;
-  max-width: 300px;
+  max-width: 400px;
   object-fit: contain;
   margin-bottom: 1rem;
   opacity: 0.9;
@@ -454,12 +454,12 @@ section {
 
 @media (max-width: 768px) {
   .logo-img {
-    height: 60px;
+    height: 100px;
   }
 
   .footer-logo {
-    height: 80px;
-    max-width: 250px;
+    height: 120px;
+    max-width: 300px;
   }
 
   .nav {
@@ -498,12 +498,12 @@ section {
 
 @media (max-width: 480px) {
   .logo-img {
-    height: 50px;
+    height: 80px;
   }
 
   .footer-logo {
-    height: 70px;
-    max-width: 200px;
+    height: 100px;
+    max-width: 250px;
   }
 
   .nav-links {
